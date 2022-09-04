@@ -1,259 +1,28 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles.css">
-  <script src="./script.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- 
-  <link rel="shortcut icon" href="#">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-  <script
-    type="text/javascript"
-    src="https://unpkg.com/tone@latest/build/Tone.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://unpkg.com/@tonejs/ui@0.0.8/build/tonejs-ui.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://unpkg.com/@tonejs/midi"
-  ></script>
-  <title>Piano</title>
-</head>
-<body>
-  <!-- <script type = "Module" src="./script.js" defer></script> -->
-  
-  <!-- <div id="div1">
-    
-  </div> -->
-  
-  <div id="labels_container" class="labels_container">
-    <!-- <p>Click the button below to read and play a midi file</p> -->
-    <label for="speedRange" class="speed Label">Speed of playback:</label><br>
-    <input type="range" min="1" max="20" value="10" class="slider" id="speedRange">
-    
-    <div id="countup-text"></div>
-    <span><a id="download" style="display: none;"><button type="button" class="btn btn-primary mb-4"> Download</button></a></span>
-    <button type="button" class="btn btn-danger" id="stop" disabled>Stop</button>
-    <button type="button" onclick="record()" class="btn btn-info">Record</button>
-
-
-    <input class="color" type="color" id="color" onchange="printColor(event)" value="#ff0000">
-    <label for="color" class="color_label">Color:</label><br>
-
-    <input class="color2" type="color" id="color2" onchange="printColor2(event)" value="#ff0000">
-    <label for="color2" class="color_label2">Color2:</label><br>
-
-    <button class="start" id="start">Midi Access</button>
-    <label for="start" class="start_label">Midi:</label><br>
-
-    <input type="number" placeholder="Enter Property" id="myInput" onchange="setValue(event)" value="15">
-
-    <script src="record.js"></script>
-  </div>
-
-    <div class="square" id="square"></div>
-  <div id="1" class="rectangle"></div>
-  <div id="FileDrop">
-    <div id="Text">
-      Drop a midi file here
-    </div>
-    <input type="file" accept="audio/midi" />
-  </div>
-  <div id="Results">
-    <textarea
-      id="ResultsText"
-      placeholder="json output..."
-    ></textarea>
-  </div>
-  <div class="piano">
-
-    
-    
-
-    <!-- <div id="E0" class="key white"></div>
-    <div id="F0" class="key white"></div>
-    <div id="Fs0" class="key black"></div>
-    <div id="G0" class="key white"></div>
-    <div id="Gs0" class="key black"></div> -->
-
-    <div id="A-1" class="key white"></div>
-    <div id="As-1" class="key black"></div>
-    <div id="B-1" class="key white"></div>
-    <div id="C0" class="key white"></div>
-    <div id="Cs0" class="key black"></div>
-    <div id="D0" class="key white"></div>
-    <div id="Ds0" class="key black"></div>
-    <div id="E0" class="key white"></div>
-    <div id="F0" class="key white"></div>
-    <div id="Fs0" class="key black"></div>
-    <div id="G0" class="key white"></div>
-    <div id="Gs0" class="key black"></div>
-    <div id="A0" class="key white"></div>
-    <div id="As0" class="key black"></div>
-    <div id="B0" class="key white"></div>
-    <div id="C1" class="key white"></div>
-    <div id="Cs1" class="key black"></div>
-    <div id="D1" class="key white"></div>
-    <div id="Ds1" class="key black"></div>
-    <div id="E1" class="key white"></div>
-    <div id="F1" class="key white"></div>
-    <div id="Fs1" class="key black"></div>
-    <div id="G1" class="key white"></div>
-    <div id="Gs1" class="key black"></div>
-    <div id="A1" class="key white"></div>
-    <div id="As1" class="key black"></div>
-    <div id="B1" class="key white"></div>
-    <div id="C2" class="key white"></div>
-    <div id="Cs2" class="key black"></div>
-    <div id="D2" class="key white"></div>
-    <div id="Ds2" class="key black"></div>
-    <div id="E2" class="key white"></div>
-    <div id="F2" class="key white"></div>
-    <div id="Fs2" class="key black"></div>
-    <div id="G2" class="key white"></div>
-    <div id="Gs2" class="key black"></div>
-    <div id="A2" class="key white"></div>
-    <div id="As2" class="key black"></div>
-    <div id="B2" class="key white"></div>
-    <div id="C3" class="key white"></div>
-    <div id="Cs3" class="key black"></div>
-    <div id="D3" class="key white"></div>
-    <div id="Ds3" class="key black"></div>
-    <div id="E3" class="key white"></div>
-    <div id="F3" class="key white"></div>
-    <div id="Fs3" class="key black"></div>
-    <div id="G3" class="key white"></div>
-    <div id="Gs3" class="key black"></div>
-    <div id="A3" class="key white"></div>
-    <div id="As3" class="key black"></div>
-    <div id="B3" class="key white"></div>
-    <div id="C4" class="key white"></div>
-    <div id="Cs4" class="key black"></div>
-    <div id="D4" class="key white"></div>
-    <div id="Ds4" class="key black"></div>
-    <div id="E4" class="key white"></div>
-    <div id="F4" class="key white"></div>
-    <div id="Fs4" class="key black"></div>
-    <div id="G4" class="key white"></div>
-    <div id="Gs4" class="key black"></div>
-    <div id="A4" class="key white"></div>
-    <div id="As4" class="key black"></div>
-    <div id="B4" class="key white"></div>
-    <div id="C5" class="key white"></div>
-    <div id="Cs5" class="key black"></div>
-    <div id="D5" class="key white"></div>
-    <div id="Ds5" class="key black"></div>
-    <div id="E5" class="key white"></div>
-    <div id="F5" class="key white"></div>
-    <div id="Fs5" class="key black"></div>
-    <div id="G5" class="key white"></div>
-    <div id="Gs5" class="key black"></div>
-    <div id="A5" class="key white"></div>
-    <div id="As5" class="key black"></div>
-    <div id="B5" class="key white"></div>
-    <div id="C6" class="key white"></div>
-    <div id="Cs6" class="key black"></div>
-    <div id="D6" class="key white"></div>
-    <div id="Ds6" class="key black"></div>
-    <div id="E6" class="key white"></div>
-    <div id="F6" class="key white"></div>
-    <div id="Fs6" class="key black"></div>
-    <div id="G6" class="key white"></div>
-    <div id="Gs6" class="key black"></div>
-    <div id="A6" class="key white"></div>
-    <div id="As6" class="key black"></div>
-    <div id="B6" class="key white"></div>
-    <div id="C7" class="key white"></div>
-
-<!-- 
-  <audio id="aC3" src="Emotional_2.0/c3.mp3"></audio>
-  <audio id="aDb3" src="Emotional_2.0/cs3.mp3"></audio>
-  <audio id="aD3" src="Emotional_2.0/d3.mp3"></audio>
-  <audio id="aEb3" src="Emotional_2.0/ds3.mp3"></audio>
-  <audio id="aE3" src="Emotional_2.0/e3.mp3"></audio>
-  <audio id="aF3" src="Emotional_2.0/f3.mp3"></audio>
-  <audio id="aGb3" src="Emotional_2.0/fs3.mp3"></audio>
-  <audio id="aG3" src="Emotional_2.0/g3.mp3"></audio>
-  <audio id="aAb3" src="Emotional_2.0/gs3.mp3"></audio>
-  <audio id="aA3" src="Emotional_2.0/a3.mp3"></audio>
-
-  <audio id="aBb3" src="Emotional_2.0/as3.mp3"></audio>
-  <audio id="aB3" src="Emotional_2.0/b3.mp3"></audio>
-  <audio id="aC4" src="Emotional_2.0/c4.mp3"></audio>
-  <audio id="aDb4" src="Emotional_2.0/cs4.mp3"></audio>
-  <audio id="aD4" src="Emotional_2.0/d4.mp3"></audio>
-  <audio id="aEb4" src="Emotional_2.0/ds4.mp3"></audio>
-  <audio id="aE4" src="Emotional_2.0/e4.mp3"></audio> -->
-
-    
-   
-<!-- 
- 
-  <audio id="aC1" src="notes/C1.mp3"></audio>
-  <audio id="aDb1" src="notes/Db1.mp3"></audio>
-  <audio id="aD1" src="notes/D1.mp3"></audio>
-  <audio id="aEb1" src="notes/Eb1.mp3"></audio>
-  <audio id="aE1" src="notes/E1.mp3"></audio>
-  <audio id="aF1" src="notes/F1.mp3"></audio>
-  <audio id="aGb1" src="notes/Gb1.mp3"></audio>
-  <audio id="aG1" src="notes/G1.mp3"></audio>
-  <audio id="aAb1" src="notes/Ab1.mp3"></audio>
-  <audio id="aA1" src="notes/A1.mp3"></audio>
-  <audio id="aBb1" src="notes/Bb1.mp3"></audio>
-  <audio id="aB1" src="notes/B1.mp3"></audio>
-  <audio id="aC2" src="notes/C2.mp3"></audio>
-  <audio id="aDb2" src="notes/Db2.mp3"></audio>
-  <audio id="aD2" src="notes/D2.mp3"></audio>
-  <audio id="aEb2" src="notes/Eb2.mp3"></audio>
-  <audio id="aE2" src="notes/E2.mp3"></audio>
-  <audio id="aF2" src="notes/F2.mp3"></audio>
-  <audio id="aGb2" src="notes/Gb2.mp3"></audio>
-  <audio id="aG2" src="notes/G2.mp3"></audio>
-  <audio id="aAb2" src="notes/Ab2.mp3"></audio>
-  <audio id="aA2" src="notes/A2.mp3"></audio>
-  <audio id="aBb2" src="notes/Bb2.mp3"></audio>
-  <audio id="aB2" src="notes/B2.mp3"></audio>
-
-
-  <audio id="aF4" src="Emotional_2.0/f4.mp3"></audio>
-  <audio id="aGb4" src="Emotional_2.0/fs4.mp3"></audio>
-  <audio id="aG4" src="Emotional_2.0/g4.mp3"></audio>
-  <audio id="aAb4" src="Emotional_2.0/gs4.mp3"></audio>
-  <audio id="aA4" src="Emotional_2.0/a4.mp3"></audio>
-  <audio id="aBb4" src="Emotional_2.0/as4.mp3"></audio>
-  <audio id="aB4" src="Emotional_2.0/b4.mp3"></audio>
-  <audio id="aC5" src="Emotional_2.0/c5.mp3"></audio>
-  <audio id="aDb5" src="Emotional_2.0/cs5.mp3"></audio>
-  <audio id="aD5" src="Emotional_2.0/d5.mp3"></audio>
-  <audio id="aEb5" src="Emotional_2.0/ds5.mp3"></audio>
-  <audio id="aE5" src="Emotional_2.0/e5.mp3"></audio>
-  <audio id="aF5" src="Emotional_2.0/f5.mp3"></audio>
-  <audio id="aGb5" src="Emotional_2.0/fs5.mp3"></audio>
-  <audio id="aG5" src="Emotional_2.0/g5.mp3"></audio>
-  <audio id="aAb5" src="Emotional_2.0/gs5.mp3"></audio>
-  <audio id="aA5" src="Emotional_2.0/a5.mp3"></audio>
-  <audio id="aBb5" src="Emotional_2.0/as5.mp3"></audio>
-  <audio id="aB5" src="Emotional_2.0/b5.mp3"></audio> -->
-
-
-
-
-
-
- 
-  
-
-
-</body>
-</body>
+<html>
+ <head>
+   <title>YOUR NAME Portfolio</title>
+ </head>
+ <body>
+   <nav>
+     <ul>
+       <li><a href=”/”>Home</a></li>
+       <li><a href=”/about”>About</a></li>
+       <li><a href=”/resume”>Resume</a></li>
+       <li><a href=”/blog”>Blog</a></li>
+     </ul>
+   </nav>
+   <div class=”container”>
+     <div class=”blurb”>
+       <h1>Hi, I am YOUR NAME!</h1>
+       <p>This is my first page for my personal website!</a></p>
+     </div>
+   </div>
+   <footer>
+   <ul>
+     <li><a href=”mailto:YOUREMAIL”>YOUREMAIL</a></li>
+   </ul>
+   </footer>
+ </body>
 </html>
-
