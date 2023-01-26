@@ -52,13 +52,13 @@ ul.posts li {
 	margin: 0 -.25rem;
   transition: color .55s ease-in-out, box-shadow .5s ease-in-out;
 }
-a:hover {
+.links:hover {
   color: #fff;
   box-shadow: inset 500px 0 0 0 #54b3d6;;
 }
 
 /* Presentational styles */
-.links  {
+.links {
 	color: #54b3d6;
   font-family: 'Poppins', sans-serif;
   font-size: 17px;
