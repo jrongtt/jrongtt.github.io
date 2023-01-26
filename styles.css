@@ -50,20 +50,20 @@ a {
   color: #54b3d6;
 	padding: 0 .25rem;
 	margin: 0 -.25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  transition: color .55s ease-in-out, box-shadow .5s ease-in-out;
 }
 a:hover {
   color: #fff;
-  box-shadow: inset 200px 0 0 0 #54b3d6;;
+  box-shadow: inset 500px 0 0 0 #54b3d6;;
 }
 
 /* Presentational styles */
 a {
 	color: #54b3d6;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
 	font-weight: 500;
-  line-height: 2;
+  line-height: 0.5;
   text-decoration: none;
 }
 
